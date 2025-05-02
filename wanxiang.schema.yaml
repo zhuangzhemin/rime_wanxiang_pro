@@ -909,7 +909,7 @@ mohuyin:
 
 user_dict_set:
   dictionary: wanxiang
-  initial_quality: 0
+  initial_quality: 100
   enable_completion: false
   enable_sentence: false
   spelling_hints: 100

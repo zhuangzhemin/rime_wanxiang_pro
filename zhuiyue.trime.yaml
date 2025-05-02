@@ -197,8 +197,8 @@ style:
   preview_text_size: 36 #按键提示字号
 
   # 悬浮窗口
-  label_font: label.ttf #标签字型
-  label_text_size: 19 #标签字号
+  label_font: label.ttf #编标签字体
+  label_text_size: 16 #标签字号
   #text_height: 22 #编码区高度
   text_font: latin.ttf #编码字型
   text_size: 16 #编码区字号
@@ -3123,7 +3123,7 @@ preset_keyboards:
     name: 26键
     author: 'amzxyz'
     ascii_mode: 0
-    label_transform: uppercase   #键盘字母转化为大写
+    #label_transform: uppercase   #键盘字母转化为大写
     lock: true #切换程序时记忆键盘
     width: 10
     __patch: 
@@ -3175,24 +3175,23 @@ preset_keyboards:
       - { click: 'm', long_click: 'fenhao', __include: styl/key }
       - { click: BS, width: 15, swipe_up: 'Escape' }
       # 第 4 行
-      - { click: 'Mode_switch', composing: CommitScriptText, width: 11, __include: styl/off_key }
-      - { click: Keyboard_number, composing: xiegang, width: 12, __include: styl/off_key, __patch: conf/key_height_last }  
-      - { click: 'douhao', label: ' ，', long_click: 'xiegang', has_menu: Page_Up, width: 11, __include: styl/key } 
+      - { click: 'Mode_switch', composing: CommitScriptText, width: 15, __include: styl/off_key }
+      - { click: Keyboard_number, long_click: Keyboard_symbols, __include: styl/off_key, __patch: conf/key_height_last }  
+      - { click: 'douhao', label: ' ，', long_click: 'xiegang', has_menu: Page_Up, __include: styl/key } 
       - { click: space,                        
           long_click: VOICE_ASSIST,
           swipe_up: Clear,
           swipe_down: liquid_keyboard_clipboard,
           key_symbol_offset_x: 0,
-          width: 29,
+          width: 30,
           key_back_color: space_back_color,
           hilited_key_back_color: hilited_space_back_color,
         }      
-      - { click: 'juhao', label: ' 。', long_click: '?', has_menu: Page_Down, width: 11, __include: styl/key }
-      - { click: Keyboard_symbols, long_click: Theme_settings1, width: 11, __include: styl/off_key }     
+      - { click: 'juhao', label: ' 。', long_click: '?', has_menu: Page_Down, __include: styl/key }
       - {
           click: Return,
           long_click: kb_func,
-          width: 15,
+          width: 25,
           key_back_color: enter_back_color,
           hilited_key_back_color: hilited_enter_back_color,
           key_text_color: enter_text_color,
@@ -3503,10 +3502,10 @@ preset_keyboards:
       - { click: Hint_switch, __include: styl/off_func }
       - { click: Back, __include: styl/off_func }
       - { click: Deploy, __include: styl/off_func }
-      - { click: Sync, __include: styl/off_func }
       - { click: Schema_settings, __include: styl/off_func }
       - { click: Theme_settings, __include: styl/off_func }
       - { click: Settings, __include: styl/off_func }
+      - { click: Sync, __include: styl/off_func }
       - { click: kb_edit, __include: styl/off_func }
       - { click: Baidu, __include: styl/off_func }
       - { click: Google, __include: styl/off_func }
