@@ -2,8 +2,8 @@
 # encoding: utf-8
 
 config_version: "3.0"
-name: 流星追月 #方案名稱
-author: 流星追月 <zhuangzhemin@qq.com> #作者資訊
+name: 流星追月 #方案名称
+author: 流星追月 <zhuangzhemin@qq.com> #作者
 
 #键盘高度
 height:
@@ -78,9 +78,7 @@ style:
   latin_font: latin.ttf #西文本体
   latin_locale: en_US #西文语言
   locale: zh_CN #缺省语言 zh_TW,zh_CN,zh_HK,""
-  # TODO
   keyboard_height: 250 #锁定键盘高度，避免切换时键盘高度变化而造成闪烁
-  # TODO
   keyboard_height_land: 200 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
   preview_font: latin.ttf #按键提示字体
   preview_height: 60 #按键提示高度
@@ -118,8 +116,7 @@ fallback_colors:
   hilited_candidate_text_color: hilited_text_color
   hilited_candidate_back_color: hilited_back_color
   hilited_comment_text_color: comment_text_color
-  # TODO
-  #text_back_color: back_color
+  text_back_color: back_color
   hilited_key_back_color: hilited_candidate_back_color
   hilited_key_text_color: hilited_candidate_text_color
   hilited_key_symbol_color: hilited_comment_text_color
@@ -131,17 +128,14 @@ fallback_colors:
   key_border_color: border_color
   key_text_color: candidate_text_color
   key_symbol_color: comment_text_color
-  # TODO
-  #keyboard_back_color: border_color
+  keyboard_back_color: border_color
   label_color: candidate_text_color
   off_key_back_color: key_back_color
   off_key_text_color: key_text_color
   on_key_back_color: hilited_key_back_color
   on_key_text_color: hilited_key_text_color
-  preview_back_color: key_text_color
-  preview_text_color: key_back_color
-  #preview_back_color: key_back_color
-  #preview_text_color: key_text_color
+  preview_back_color: key_back_color
+  preview_text_color: key_text_color
   shadow_color: border_color
   root_background: back_color # 整个键盘区+候选栏的背景图/色
   candidate_background: back_color #候选栏的整体背景图/色
@@ -231,12 +225,17 @@ liquid_keyboard:
   single_width: 60    #single类型的按键宽度
   vertical_gap: 1     #纵向按键间隙
   margin_x: 0.5       #左右按键间隙的1/2
-  keyboards: [emoji, math, ascii, cn, clipboard, history, exit, list , table, symbol, ids , pinyin, jp, unit, exit, grease, rusa, korea, lation, yinbiao, exit]  #tab列表
-  #keyboards: [letter, number, emoji, math, ascii, cn, history, clipboard, draft, list, tabs, exit, ids , jp, table, symbol, pinyin, grease, rusa, korea, lation, yinbiao, unit,  exit]  #tab列表
-  exit:
-    name: 返回
-    type: NO_KEY
-    keys: EXIT
+  fixed_key_bar:  # 固定按键条
+    position: right  # 摆放位置（在滚动区域的……） top|bottom|left|right
+    keys:  # 按键（显示名称为对应的label，不能放太多）
+      - liquid_keyboard_exit
+      - liquid_keyboard_tabes
+      - BackSpace1
+      - Return1
+ #     - liquid_keyboard_clipboard  
+ #     - liquid_keyboard_switch    #进入更多
+  #keyboards: [emoji, math, ascii, cn, clipboard, history, exit, list , table, symbol, ids , pinyin, jp, unit, exit, grease, rusa, korea, lation, yinbiao, exit]  #tab列表
+  keyboards: [emoji, math, ascii, cn, clipboard, history, list , tabs, table, symbol, ids , pinyin, jp, unit, exit, grease, rusa, korea, lation, yinbiao]  #tab列表
   tabs:
     name: 更多
     type: TABS
@@ -449,10 +448,11 @@ preset_keys:
   VOLUME_MUTE: {label: 静音, send: VOLUME_MUTE}
   # 编辑
   Shift_L: {label: Shift, preview: '⇪', functional: false, send: Shift_L}
-  Return: { label: enter_labels, preview: '↩', functional: false, send: Return }
-  Return1: {label: Enter, preview: '↩', functional: false, send: Return}
+  Return: {label: Enter, preview: '↩', functional: false, send: Return}
+  Return1: {label: 回车, preview: '↩', functional: false, send: Return}
   Hide: {label: 隐藏, send: BACK}
   BackSpace: {label: ⌫, preview: '⌫', repeatable: true, functional: false, send: BackSpace}
+  BackSpace1: {label: 退格, preview: '⌫', repeatable: true, functional: false, send: BackSpace}
   space: {repeatable: false, preview: ' ', functional: false, label: '___', send: space}
   space1: {repeatable: false, label: '空格', functional: false, send: space}
   Clear: {label: 清除, send: Clear}
@@ -496,6 +496,10 @@ preset_keys:
   Keyboard_default: {label: 返回, send: Eisu_toggle, select: .default}
   Keyboard_switch: {label: 鍵盤, send: Eisu_toggle, select: .next}
   liquid_keyboard_switch: { toggle: _liquid_keyboard, send: Mode_switch, states: [ 更多, 更多 ] }
+  liquid_keyboard_exit: {label: 返回, send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
+  liquid_keyboard_emoji: { label: 🙂, send: function, command: liquid_keyboard, option: "emoji" }
+  liquid_keyboard_clipboard: { label: 剪贴, send: function, command: liquid_keyboard, option: "剪贴" }
+  liquid_keyboard_tabes: { label: 更多, send: function, command: liquid_keyboard, option: "更多" }
   # rime状态
   Mode_switch: {toggle: ascii_mode, functional: false, send: Mode_switch, states: [ 中文, En ]}
   Zenkaku_Hankaku: {toggle: full_shape, send: Mode_switch, states: [ ◖, ● ]}
@@ -520,6 +524,7 @@ preset_keys:
   Theme_settings: {label: ⛶, send: SETTINGS, option: "theme"}
   Schema_settings: {label: 方案, send: SETTINGS, option: "schema"}
   Candidate_switch: {toggle: _hide_candidate, send: Mode_switch, states: [ ☐, ─ ]}
+  Candidate_switch1: {label: 候选, toggle: _hide_candidate, send: Mode_switch, states: [有候选, 无候选] }
   Comment_switch: {toggle: _hide_comment, send: Mode_switch, states: [ 有註釋, 無註釋]}
   Hint_switch: {toggle: _hide_key_hint, send: Mode_switch, states: [ 有助記, 無助記]}
 
