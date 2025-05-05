@@ -348,16 +348,16 @@ preset_keyboards:
     label_transform: uppercase #uppercase|none 中文模式下的字母標籤自動大寫
     lock: true
     keys:
-    - {click: '1', height: 42, long_click: '!'}
-    - {click: '2', long_click: '@'}
-    - {click: '3', long_click: '#'}
-    - {click: '4', long_click: '$'}
-    - {click: '5', long_click: '%'}
-    - {click: '6', long_click: '^'}
-    - {click: '7', long_click: '&'}
-    - {click: '8', long_click: '*'}
-    - {click: '9', long_click: '('}
-    - {click: '0', long_click: ')'}
+    - {click: num1, height: 42, long_click: '!'}
+    - {click: num2, long_click: '@'}
+    - {click: num3, long_click: '#'}
+    - {click: num4, long_click: '$'}
+    - {click: num5, long_click: '%'}
+    - {click: num6, long_click: '^'}
+    - {click: num7, long_click: '&'}
+    - {click: num8, long_click: '*'}
+    - {click: num9, long_click: '('}
+    - {click: num0, long_click: ')'}
     - {click: 'q', long_click: Escape}
     - {click: 'w', long_click: "~"}
     - {click: 'e', long_click: '"'}
@@ -388,12 +388,13 @@ preset_keyboards:
     - {click: 'n', long_click: ':'}
     - {click: 'm', long_click: ";"}
     - {click: BackSpace, swipe_up: Escape, width: 15}
-    - {click: Mode_switch, height: 43, long_click: Menu, width: 12.5}
-    - {click: Keyboard_number_36keys, long_click: liquid_keyboard_switch, width: 12.5}
-    - {click: ',', long_click: "/", has_menu: Page_Up}
-    - {click: space, long_click: VOICE_ASSIST, width: 30}
-    - {click: '.', long_click: '?', has_menu: Page_Down}
-    - {click: Return, long_click: Candidate_switch, width: 25}
+    - {click: Control_L, height: 43, width: 15}
+    - {click: Mode_switch, long_click: Menu, width: 10}
+    - {click: ',', long_click: "/", has_menu: Page_Up, width: 10}
+    - {click: space, long_click: VOICE_ASSIST, swipe_up: Tab, width: 25}
+    - {click: '.', long_click: '?', has_menu: Page_Down, width: 10}
+    - {click: Keyboard_number_36keys, long_click: liquid_keyboard_switch, width: 10}
+    - {click: Return, long_click: Candidate_switch, width: 20}
 
   letter:
     name: 英文36键
@@ -448,6 +449,7 @@ preset_keys:
   VOLUME_MUTE: {label: 静音, send: VOLUME_MUTE}
   # 编辑
   Shift_L: {label: Shift, preview: '⇪', functional: false, send: Shift_L}
+  Control_L: {label: Ctrl, functional: false, send: Control_L}
   Return: {label: Enter, preview: '↩', functional: false, send: Return}
   Return1: {label: 回车, preview: '↩', functional: false, send: Return}
   Hide: {label: 隐藏, send: BACK}
