@@ -1,0 +1,16 @@
+customization:
+  distribution_code_name: trime
+  distribution_version: nightly
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Thu May  8 12:53:41 2025"
+  rime_version: 1.11.2
+patch:
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key: {Caps_Lock: commit_code, Control_L: noop, Control_R: noop, Eisu_toggle: clear, Shift_L: commit_code, Shift_R: inline_ascii}
+  "menu/page_size": 9
+  punctuator:
+    half_shape: {"!": "！", "\"": {pair: ["“", "”"]}, "$": "￥", "'": {pair: ["‘", "’"]}, "(": "（", ")": "）", ",": "，", .: "。", "/": "/", ":": "：", ";": "；", "<": "《", ">": "》", "?": "？", "[": "【", "\\": "、", "]": "】", "^": "……", _: "——", "|": "·"}
+  schema_list:
+    - {schema: wanxiang}
+    - {schema: wubi86_qq}
