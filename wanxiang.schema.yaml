@@ -242,7 +242,7 @@ custom_phrase_completion:         # 用户自定义词库custom_phrase_completio
   db_class: stabledb
   enable_completion: true
   enable_sentence: false
-  initial_quality: 2
+  initial_quality: 100
 
 custom_phrase_no_completion:     # 用户自定义词库custom_phrase_no_completion.txt，不支持自动补全
   dictionary: ""
@@ -250,7 +250,8 @@ custom_phrase_no_completion:     # 用户自定义词库custom_phrase_no_complet
   db_class: stabledb
   enable_completion: false
   enable_sentence: false
-  initial_quality: 2
+  initial_quality: 100
+  tag: custom_phrase_no_completion
 
 # 简码词库导入位于jm_dicts得txt文件词库
 chengyu:
@@ -313,6 +314,7 @@ radical_lookup:
   tips: "〔反查：部件|笔画〕"
   extra_tags:
     - reverse_stroke
+    - custom_phrase_no_completion
 
 reverse_stroke:
   tag: reverse_stroke
