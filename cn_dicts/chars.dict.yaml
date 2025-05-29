@@ -9640,6 +9640,7 @@ sort: by_weight
 𨛔	fǒu;be;be;fe;;ml;ct;gi;	1
 𩂆	fǒu;yb;yb;yb;;mf;tc;fg;	1
 𫒘	fǒu;;jf	1
+𠳝	fǒu;	1
 服	fú;oy;oy;oy;ll;be;vr;eb;oy	811
 复	fù;pw;pw;pw,rw,wo;ej;oe;eh;tj;pw	780
 府	fǔ;gc;gc;gf;rk;ii;xk;yw;gc	748
@@ -18069,6 +18070,7 @@ sort: by_weight
 𫈹	jú;;ci	1
 俱	jū;rb;rb;rj;xf;oc;jh;wh;rb	1
 锔	jú;jk;jk;jj;;or;zd;qn;jk	1
+𢤹	jù;	1
 卷	juǎn;jv;jv;ef,je;ft;fu;hz;ud;dv	689
 卷	juàn;jv;jv;ef,je;ft;fu;hz;ud;dv	633
 捐	juān;fo;fo;fo;jl;qb;uv;rk;fo	621
@@ -22559,6 +22561,7 @@ sort: by_weight
 𫞉	liǔ;;ml	1
 镏	liù;jt;jt;jl;dw;ow;zq;qq;jt	1
 𠮩	liū;	1
+𤠑	liú;	1
 咯	lo;kk;kk;kg;or;rr;ds;kt;kk	812
 龙	lóng;yp;ul;ad;sh;ip;tl;dx;ab	745
 隆	lóng;eu;eu;eu;bg;nm;tl;bt;eu	667
@@ -44513,6 +44516,7 @@ sort: by_weight
 𰁜	yì;;ld	1
 踦	yǐ;zk;zk;zq;gj;rr;pz;kh;zk	1
 𡃀	yì;	1
+𢯎	yī;	1
 因	yīn;kd;kd;kd;nx;wk;rm;ld;wd	835
 音	yīn;lo;lo;lo;bv;ya;xy;uj;lo	785
 引	yǐn;gl;gl;ga;rp;nl;bg;xh;ga	770
@@ -54124,7 +54128,6 @@ sort: by_weight
 𠳔	无;	1
 𠳘	无;	1
 𠳚	无;	1
-𠳝	无;	1
 𠳖	无;	1
 𠳛	无;	1
 𠳙	无;	1
@@ -59014,7 +59017,6 @@ sort: by_weight
 𢤺	无;	1
 𢤸	无;	1
 𢤷	无;	1
-𢤹	无;	1
 𢤶	无;	1
 𢤼	无;	1
 𢤻	无;	1
@@ -59464,7 +59466,6 @@ sort: by_weight
 𢯂	无;	1
 𢯊	无;	1
 𢯈	无;	1
-𢯎	无;	1
 𢯆	无;	1
 𢯐	无;	1
 𢯒	无;	1
@@ -64443,7 +64444,6 @@ sort: by_weight
 𤠔	无;	1
 𤠒	无;	1
 𤠕	无;	1
-𤠑	无;	1
 𤠡	无;	1
 𤠜	无;	1
 𤠢	无;	1
