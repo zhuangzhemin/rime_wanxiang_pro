@@ -4,6 +4,9 @@
 local M = {}
 local ACCEPT, PASS = 1, 2
 
+-- 引入移动设备检测模块
+local mobile_detector = require("wanxiang")
+
 -- 状态标志说明:
 -- env.prev_input_len: 上一次按键前的输入长度
 -- env.bs_sequence:  当前是否处于连续 Backspace 序列中
@@ -12,14 +15,11 @@ function M.init(env)
     env.prev_input_len = -1  -- 初始化为无效值
     env.bs_sequence = false
 end
-
 function M.func(key, env)
     local ctx = env.engine.context
     local kc = key.keycode
-    local key_released = key:release()
-    
     -- 非 Backspace 键或按键释放事件：重置状态
-    if kc ~= 0xFF08 or key_released then
+    if kc ~= 0xFF08 or key:release() then
         env.bs_sequence = false
         env.prev_input_len = -1
         return PASS
@@ -30,21 +30,22 @@ function M.func(key, env)
     
     -- 处于连续 Backspace 序列中
     if env.bs_sequence then
-        -- 检查是否从1变为0
-        if env.prev_input_len == 1 and current_len == 0 then
-            -- 拦截：从1变为0的情况
-            return ACCEPT
+        -- 移动设备由于运行逻辑的问题不能实现友好的逻辑
+        if mobile_detector.is_mobile_device() then
+            return PASS  -- 直接放行
+        -- PC设备保持原有逻辑：长度1变0时拦截
+        else
+            if env.prev_input_len == 1 and current_len == 0 then
+                return ACCEPT  -- 拦截：PC设备上从1变为0的情况
+            end
         end
-        
         -- 更新状态
         env.prev_input_len = current_len
         return PASS
     end
-    
     -- 开始新的 Backspace 序列
     env.bs_sequence = true
     env.prev_input_len = current_len
-    
     -- 首次按键总是允许
     return PASS
 end
