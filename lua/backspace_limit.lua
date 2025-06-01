@@ -1,0 +1,51 @@
+-- backspace_limiter.lua
+-- 防止连续 Backspace 在编码为空时删除已上屏内容，虽然我更推荐拍下esc。
+-- @author amzxyz
+local M = {}
+local ACCEPT, PASS = 1, 2
+
+-- 状态标志说明:
+-- env.prev_input_len: 上一次按键前的输入长度
+-- env.bs_sequence:  当前是否处于连续 Backspace 序列中
+
+function M.init(env)
+    env.prev_input_len = -1  -- 初始化为无效值
+    env.bs_sequence = false
+end
+
+function M.func(key, env)
+    local ctx = env.engine.context
+    local kc = key.keycode
+    local key_released = key:release()
+    
+    -- 非 Backspace 键或按键释放事件：重置状态
+    if kc ~= 0xFF08 or key_released then
+        env.bs_sequence = false
+        env.prev_input_len = -1
+        return PASS
+    end
+    
+    -- 获取当前输入长度
+    local current_len = #ctx.input
+    
+    -- 处于连续 Backspace 序列中
+    if env.bs_sequence then
+        -- 检查是否从1变为0
+        if env.prev_input_len == 1 and current_len == 0 then
+            -- 拦截：从1变为0的情况
+            return ACCEPT
+        end
+        
+        -- 更新状态
+        env.prev_input_len = current_len
+        return PASS
+    end
+    
+    -- 开始新的 Backspace 序列
+    env.bs_sequence = true
+    env.prev_input_len = current_len
+    
+    -- 首次按键总是允许
+    return PASS
+end
+return M

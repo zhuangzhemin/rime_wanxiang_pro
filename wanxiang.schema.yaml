@@ -84,6 +84,7 @@ engine:
     - lua_processor@*quick_symbol_text     #快符引导以及重复上屏，配合quick_symbol_text顶层配置清单定义扩展按键
     - lua_processor@*super_tips*S          #超级提示模块：表情、简码、翻译、化学式、等等靠你想象
     - lua_processor@*limit_repeated        #用于限制最大候选长度以及最大重复输入声母编码长度，避免性能异常
+    - lua_processor@*backspace_limit       #防止连续 Backspace 在编码为空时删除已上屏内容
     - lua_processor@*userdb_sync_delete    #危险操作：通过输入 /del 触发,用于清理自定义同步目录下txt用户词典里被标记c<0的词条，操作步骤：必须先同步、再执行/del、再去部署刷新状态、再去同步回收词典，完成动作。
     - ascii_composer                       #处理英文模式及中英文切换
     - recognizer                           #与 matcher 搭配，处理符合特定规则的输入码，如网址、反查等 tags
