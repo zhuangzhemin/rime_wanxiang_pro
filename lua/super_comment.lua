@@ -15,6 +15,38 @@
 --  corrector: true                     # 启用错音错词提醒，例如输入 geiyu 给予 获得 jiyu 提示
 --  corrector_type: "{comment}"         # 新增一个显示类型，比如"【{comment}】" 
 
+local function utf8_sub(s, i, j)
+   i = i or 1
+   j = j or -1
+   if i < 1 or j < 1 then
+      local n = utf8.len(s)
+      if not n then return nil end
+      if i < 0 then i = n + 1 + i end
+      if j < 0 then j = n + 1 + j end
+      if i < 0 then i = 1 elseif i > n then i = n end
+      if j < 0 then j = 1 elseif j > n then j = n end
+   end
+   if j < i then return "" end
+   i = utf8.offset(s, i)
+   j = utf8.offset(s, j + 1)
+   if i and j then
+      return s:sub(i, j - 1)
+   elseif i then
+      return s:sub(i)
+   else
+      return ""
+   end
+end
+
+local function truncate_comment(comment)
+  local MAX_LENGTH = 80
+  local MAX_UTF8_LENGTH = 40
+  local result = comment:gsub("\\n", ' ')
+  if #result > MAX_LENGTH then
+    result = utf8_sub(result, 1, MAX_UTF8_LENGTH)
+  end
+  return result
+end
 
 -- 定义 fuzhu_type 与匹配模式的映射表
 local patterns = {
@@ -93,7 +125,7 @@ function CR.init(env)
         CR.corrections = corrections
     end
 end
-function CR.run(cand, env)
+function CR.run(cand, env, initial_comment)
     -- 使用候选词的 comment 作为 code，在缓存中查找对应的修正
     local correction = nil
     if corrections_cache then
@@ -253,6 +285,8 @@ function ZH.func(input, env)
             elseif input_str:match("//") and index == 1 then  --匹配pin造词状态
             elseif input_str:match("^[VRNU/]") then
                 -- 输入包含 //，首选项保留注释
+            elseif cand.text:match("^[%a%d '%-]+$") then -- cand.text contains only letters/numbers/ /'/-
+                -- 候选词文本只包含字母/数字/空格/'/-等英文词组字符，保留
             else
                 -- 其他情况清空
                 final_comment = ""
@@ -281,6 +315,8 @@ function ZH.func(input, env)
                 final_comment = az_comment
             end
         end
+
+        final_comment = truncate_comment(final_comment)
 
         -- 更新最终注释
         if final_comment ~= initial_comment then
