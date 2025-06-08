@@ -10,26 +10,7 @@ patch:
     switch_key: {Caps_Lock: commit_code, Control_L: noop, Control_R: noop, Eisu_toggle: clear, Shift_L: commit_code, Shift_R: inline_ascii}
   "menu/page_size": 9
   punctuator:
-    half_shape:
-      "!": "！"
-      "\"": {pair: ["“", "”"]}
-      "$": "￥"
-      "'": {pair: ["‘", "’"]}
-      "(": "（"
-      ")": "）"
-      ",": "，"
-      .: "。"
-      "/": "/"
-      ":": "："
-      ";": "；"
-      "<": "《"
-      ">": "》"
-      "?": "？"
-      "\\": "、"
-      "[": "【"
-      "]": "】"
-      "^": "……"
-      _: "——"
-      "|": "·"
+    half_shape: {"!": "！", "\"": {pair: ["“", "”"]}, "$": "￥", "'": {pair: ["‘", "’"]}, "(": "（", ")": "）", ",": "，", .: "。", "/": "/", ":": "：", ";": "；", "<": "《", ">": "》", "?": "？", "[": "【", "\\": "、", "]": "】", "^": "……", _: "——", "|": "·"}
   schema_list:
     - {schema: wanxiang}
+    - {schema: wubi86_qq}
